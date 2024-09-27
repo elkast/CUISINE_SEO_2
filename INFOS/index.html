@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <base href="https://saveursdafrique.com/"> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saveurs d'Afrique - Une Expérience Culinaire Inoubliable</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+  :root {
+    --primary-color: #e67e22;
+    --secondary-color: #2ecc71;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --background-color: #fff5e6;
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: rgba(230, 126, 34, 0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav ul li {
+    margin-left: 2rem;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  nav ul li a:hover {
+    color: var(--accent-color);
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('african-feast.jpg') no-repeat center center/cover;
+    position: relative;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    text-align: center;
+    color: white;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .cta-button:hover {
+    background-color: #e67e22;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .section {
+    padding: 5rem 10%;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .menu-item {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+  }
+  
+  .menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .menu-item-content {
+    padding: 1.5rem;
+  }
+  
+  .menu-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .menu-item p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .menu-item-price {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .story-section {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .story-image {
+    flex: 1;
+    position: relative;
+  }
+  
+  .story-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .story-content {
+    flex: 1;
+  }
+  
+  .story-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .story-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .testimonials {
+    background-color: #f9f3e6;
+  }
+  
+  .testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .testimonial-slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .testimonial {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .testimonial img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial p {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-author {
+    font-weight: 600;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 3rem 10%;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin-bottom: 2rem;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .footer-section ul li a:hover {
+    color: white;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: var(--transition);
+  }
+  
+  .social-icons a:hover {
+    color: var(--accent-color);
+  }
+  
+  .copyright {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+
+  .specialites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .specialite-item {
+    text-align: center;
+  }
+
+  .specialite-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .reservation-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .reservation-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  details {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .language-selector select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    nav ul {
+      margin-top: 1rem;
+      flex-direction: column;
+      display: none;
+    }
+    
+    nav ul li {
+      margin: 0.5rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .section {
+      padding: 3rem 5%;
+    }
+    
+    .story-section {
+      flex-direction: column;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .section {
+      padding: 4rem 7%;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+    
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .section {
+      padding: 5rem 10%;
+    }
+    
+    .menu-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .menu-item h3 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header id="header">
+    <div class="header-content">
+      <a href="#" class="logo">Saveurs d'Afrique</a>
+      <div class="menu-toggle">&#9776;</div>
+      <nav>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#specialites">Spécialités</a></li>
+          <li><a href="#histoire">Notre Histoire</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#reservation">Réservation</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="language-selector">
+        <select>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <section id="accueil" class="hero">
+    <div class="hero-content">
+      <h1>Découvrez l'Afrique dans votre assiette</h1>
+      <p>Une expérience culinaire authentique qui éveillera vos sens et vous transportera au cœur du continent africain.</p>
+      <a href="#menu" class="cta-button">Explorer notre menu</a>
+    </div>
+  </section>
+
+  <section id="menu" class="section">
+    <h2 class="section-title">Notre Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img alt="Bol de Jollof rice fumant avec du poulet grillé et des légumes colorés" src="img1.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Jollof Rice</h3>
+          <p>Un délicieux plat de riz épicé, accompagné de poulet grillé et de légumes croquants.</p>
+          <span class="menu-item-price">1890 fcfa</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img alt="Assiette de Mafe avec sauce arachide crémeuse et morceaux de viande tendres" src="img2.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Mafe</h3>
+          <p>Un ragoût de viande mijoté dans une sauce arachide crémeuse, servi avec du riz blanc.</p>
+          <span class="menu-item-price">2220 fcfa</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img alt="Plateau d'Injera éthiopien avec divers accompagnements colorés et épicés" src="img3.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Injera</h3>
+          <p>Pain plat éthiopien traditionnel servi avec une variété de ragoûts et de légumes épicés.</p>
+          <span class="menu-item-price">2000 fcfa</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img alt="" src="img4.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Poulet Yassa</h3>
+          <p>particulièrement populaire au Sénégal et en Gambie. Il est généralement préparé avec du poulet (appelé Poulet Yassa), bien que des variantes avec du poisson ou du bœuf existent aussi. La caractéristique principale du Yassa est sa sauce savoureuse à base d'oignons marinés, de citron, d'ail, et parfois de moutarde, donnant au plat un goût à la fois acidulé et légèrement épicé.</p>
+          <span class="menu-item-price">2600 fcfa</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img alt="" src="img13.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Ndolé</h3>
+          <p>Le Ndolé est un plat traditionnel camerounais, particulièrement populaire dans la région littorale du pays. Ce mets est composé principalement de feuilles amères, appelées feuilles de ndolé, et est souvent cuisiné avec de la viande, du poisson ou des crevettes, accompagné d'une sauce aux arachides..</p>
+          <span class="menu-item-price">2300 fcfa</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img alt="" src="img14.jpg" width="300" height="250">
+        <div class="menu-item-content">
+          <h3>Le Poulet Congolais</h3>
+          <p>
+            Le Poulet Congolais est un plat savoureux et traditionnel de la République Démocratique du Congo, souvent préparé pour des occasions spéciales. Il existe plusieurs variantes selon les régions, mais il est généralement cuisiné avec une sauce riche et parfumée à base de tomates, de poivrons, d'oignons et parfois d'épices locales.</p>
+          <span class="menu-item-price">2000 fcfa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="specialites" class="section">
+    <h2 class="section-title">Nos Spécialités</h2>
+    <div class="specialites-grid">
+      <div class="specialite-item">
+        <img alt="Plat signature du chef: ACOUMET" src="img9.jpg" width="300" height="200">
+        <h3>ACOUMET</h3>
+        <p>Notre plat signature,
+          L'Acoumet est un plat traditionnel béninois, souvent consommé lors des grandes occasions. Il s'agit d'une préparation à base de pâte de maïs ou de farine de maïs, accompagnée d'une sauce riche en saveurs. Ce plat est particulièrement populaire dans certaines régions du Bénin et représente un mets nourrissant et simple à préparer. </p>
+      </div>
+      <div class="specialite-item">
+        <img alt="Dessert traditionnel: Thiakry" src="img10.jpg" width="300" height="200">
+        <h3>couscous detouré</h3>
+        <p>Le couscous détourné fait référence à une version revisitée ou réinterprétée du couscous traditionnel, un plat emblématique d'Afrique du Nord. Le couscous classique est généralement préparé avec de la semoule de blé, accompagné de légumes, de viande (agneau, poulet, ou boeuf) et parfois de pois chiches ou de raisins secs, le tout servi avec un bouillon épicé.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="histoire" class="section story-section">
+    <div class="story-image">
+      <img alt="Chef africain souriant préparant un plat traditionnel dans une cuisine moderne" src="img6.jpg" width="600" height="400">
+    </div>
+    <div class="story-content">
+      <h2>Notre Histoire</h2>
+      <p>Fondé en 2010 par le Chef Amadou Diallo, Saveurs d'Afrique est né d'une passion pour partager l'authentique cuisine africaine avec le monde. Notre mission est de vous faire voyager à travers les saveurs uniques du continent, tout en préservant les traditions culinaires ancestrales.</p>
+      <p>Chaque plat que nous servons raconte une histoire, celle de nos racines, de nos familles et de notre héritage. Nous sommes fiers de vous offrir une expérience gastronomique qui va au-delà du simple repas, une véritable célébration de la culture africaine.</p>
+    </div>
+  </section>
+
+  <section id="temoignages" class="section testimonials">
+    <h2 class="section-title">Ce que disent nos clients</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial">
+        <img alt="Portrait souriant d'une femme aux cheveux bouclés" src="img8.jpg" width="100" height="100">
+        <p>"Une explosion de saveurs ! Chaque bouchée était un voyage. Le service était impeccable et l'ambiance chaleureuse. Je recommande vivement !"</p>
+        <span class="testimonial-author">- SOPHIE LA TRINE.</span>
+      </div>
+      <div class="testimonial">
+        <img alt="Portrait d'un homme d'âge moyen souriant" src="img7.jpg" width="100" height="100">
+        <p>"En tant que connaisseur de la cuisine africaine, je peux dire que Saveurs d'Afrique offre une authentique expérience culinaire. Bravo au chef !"</p>
+        <span class="testimonial-author">- THOMAS LA CLOCHE.</span>
+      </div>
+      <div class="testimonial">
+        <img alt="Portrait d'une jeune femme souriante avec des lunettes" src="img12.jpg" width="100" height="100">
+        <p>"L'ambiance est incroyable, on se croirait vraiment en Afrique. Les plats sont délicieux et le personnel est adorable. J'y retournerai sans hésiter !"</p>
+        <span class="testimonial-author">- GIROCHI.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservation" class="section">
+    <h2 class="section-title">Réservez votre table</h2>
+    <form class="reservation-form">
+      <input type="text" placeholder="Nom" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Téléphone" required>
+      <input type="date" required>
+      <input type="time" required>
+      <input type="number" placeholder="Nombre de personnes" min="1" max="10" required>
+      <button type="submit" class="cta-button">Réserver</button>
+    </form>
+  </section>
+
+  <section id="faq" class="section">
+    <h2 class="section-title">Questions Fréquentes</h2>
+    <div class="faq-container">
+      <details>
+        <summary>Proposez-vous des options végétariennes ?</summary>
+        <p>Oui, nous avons une sélection de plats végétariens et végans inspirés de la cuisine africaine.</p>
+      </details>
+      <details>
+        <summary>Acceptez-vous les groupes ?</summary>
+        <p>Nous accueillons les groupes jusqu'à 20 personnes. Pour les groupes plus importants, veuillez nous contacter directement.</p>
+      </details>
+      <details>
+        <summary>faite vous les livraisons a domicile ?</summary>
+        <p>oui nous le faisons,pour ce faire contacter notre service client situer a bkou centre 1 : Tél : 01 23 45 67 89 </p>
+      </details>
+
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contactez-nous</h3>
+        <p>123 Rue centre bkou, 75 bkou </p>
+        <p>Tél : 01 23 45 67 89</p>
+        <p>Email :saveursdafrique@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Horaires</h3>
+        <p>Lundi - Vendredi : 12h - 14h30, 19h - 22h30</p>
+        <p>Samedi - Dimanche : 12h - 23h</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#histoire">Notre Histoire</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="https://facebook.com/saveursdafrique" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com/saveursdafrique" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://twitter.com/saveursdafrique" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+    <p class="copyright">&copy; 2023 Saveurs d'Afrique. Tous droits réservés.</p>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Header animation on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.style.backgroundColor = 'rgba(230, 126, 34, 1)';
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.backgroundColor = 'rgba(230, 126, 34, 0.9)';
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // Testimonial slider
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    testimonialSlider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - testimonialSlider.offsetLeft;
+      scrollLeft = testimonialSlider.scrollLeft;
+    });
+
+    testimonialSlider.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    testimonialSlider.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    testimonialSlider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - testimonialSlider.offsetLeft;
+      const walk = (x - startX) * 2;
+      testimonialSlider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Menu toggle functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Close the menu when a link is clicked
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+
+    // Menu item animation on scroll
+    const menuItems = document.querySelectorAll('.menu-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    menuItems.forEach(item => {
+      item.style.opacity = 0;
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
